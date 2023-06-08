@@ -1,5 +1,7 @@
-export const Vacancy = () => {
-    return (
-        <div></div>
-    )
+.container {
+height: 137px;
+    margin-top: 15px;
+
+    background-color: white;
+border-radius: 10px
 }

@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+
+import { Outlet } from 'react-router-dom'
+
+import { SimpleBackdrop } from '../common/components/Backdrop/Backdrop'
+import { Header } from '../common/components/Header/Header'
+
+import s from './App.module.css'
+import { selectIsFirstStart } from './selectors'
+import { useAppSelector } from './store'
 
 function App() {
+  const isFirstStart = useAppSelector(selectIsFirstStart)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={s.App}>
+      <Header />
+      <SimpleBackdrop />
+      {/*{isFirstStart && <Button />}*/}
+      <Outlet />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

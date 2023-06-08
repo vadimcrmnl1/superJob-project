@@ -1,7 +1,15 @@
-export const JobsContainer = () => {
-    return (
-        <div className={s.container}>
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 
-        </div>
-    )
+}
+.searchAndJobsBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+
+width: 800px;
+    margin-top: 30px;
+    margin-left: 20px;
 }

@@ -1,7 +1,12 @@
 import { AnyAction } from 'redux'
 import { ThunkAction, ThunkDispatch } from 'redux-thunk'
 
+import { AuthActionsType } from '../features/auth/types'
+import { FiltersActionsType } from '../features/Jobs/components/Filters/types'
+import { JobsActionsType } from '../features/Jobs/types'
+
 import * as actions from './actions'
+import { AppRootStateType } from './store'
 
 export type InferValueTypes<T> = T extends { [key: string]: infer U } ? U : never
 export type AppThunkDispatch = ThunkDispatch<AppRootStateType, unknown, AllReducersActionsType>
@@ -11,9 +16,14 @@ export type AppThunk<A extends AnyAction, ReturnType = void> = ThunkAction<
   unknown,
   A
 >
-export type AllReducersActionsType = AppActionsType
+export type AllReducersActionsType =
+  | AppActionsType
+  | AuthActionsType
+  | FiltersActionsType
+  | JobsActionsType
 export type AppActionsType = ReturnType<InferValueTypes<typeof actions>>
 export type AppInitialStateType = {
   isLoading: boolean
   error: string
+  isFirstStart: boolean
 }

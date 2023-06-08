@@ -1,0 +1,53 @@
+.wrapper {
+    /*position: fixed;*/
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+
+    width: 100%;
+    height: 80px;
+
+    background-color: white;
+}
+.logoBlock {
+    float: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-left: 10%;
+}
+.logoBlock p {
+    margin-left: 10px;
+
+    font-family: Poppins, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 36px;
+    
+}
+.logoBlock img {
+    width: 30px;
+    height: 30px;
+}
+.prescriptionBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+width: 30%;
+    margin-right: 35%;
+}
+.link {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 20px;
+    color: #5E96FC;
+    text-decoration: none;
+}
