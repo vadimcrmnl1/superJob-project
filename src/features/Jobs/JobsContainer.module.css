@@ -1,0 +1,7 @@
+export const JobsContainer = () => {
+    return (
+        <div className={s.container}>
+
+        </div>
+    )
+}
