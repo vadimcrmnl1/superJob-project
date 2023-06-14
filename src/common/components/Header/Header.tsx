@@ -16,7 +16,7 @@ export const Header = () => {
       </div>
       <div className={s.prescriptionBlock}>
         <div>
-          <NavLink className={s.link} to={PATH.vacancy}>
+          <NavLink className={s.link} to={PATH.vacancies}>
             Поиск вакансий
           </NavLink>
         </div>

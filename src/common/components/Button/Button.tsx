@@ -15,13 +15,12 @@ export const Button = () => {
   const isFirst = useAppSelector(selectIsFirstStart)
   const token = useAppSelector(selectAccessToken)
 
-  console.log(token)
   const handleStartSearch = () => {
     dispatch(authTC())
   }
 
   if (!isFirst) {
-    return <Navigate to={PATH.vacancy} />
+    return <Navigate to={PATH.vacancies} />
   }
 
   return (

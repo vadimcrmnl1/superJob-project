@@ -49,11 +49,18 @@ export const Filters = () => {
   })
   const handleResetForm = () => {
     reset()
+    dispatch(actions.setPaymentFromAC(0))
+    dispatch(actions.setPaymentToAC(0))
+    dispatch(actions.setCataloguesAC([]))
   }
-
-  useEffect(() => {
-    dispatch(getCataloguesTC())
-  }, [])
+  const handleGetCatalogues = () => {
+    if (catalogs.length === 0) {
+      dispatch(getCataloguesTC())
+    }
+  }
+  // useEffect(() => {
+  //   dispatch(getCataloguesTC())
+  // }, [])
 
   return (
     <div className={s.container}>
@@ -68,7 +75,12 @@ export const Filters = () => {
           <form onSubmit={onSubmit}>
             <div className={s.catalogBlock}>
               <label>Отрасль</label>
-              <select placeholder={'Выберите отрасль'} {...register('catalogues')}>
+              <select
+                className={s.selectInput}
+                onClick={handleGetCatalogues}
+                placeholder={'Выберите отрасль'}
+                {...register('catalogues')}
+              >
                 {catalogs.map((cat, index) => {
                   return (
                     <option key={index} value={cat.key}>
@@ -80,44 +92,23 @@ export const Filters = () => {
             </div>
             <div className={s.catalogBlock}>
               <label>Оклад</label>
-              <input placeholder={'От'} type={'number'} {...register('payment_from', { min: 1 })} />
-              <input placeholder={'До'} type={'number'} {...register('payment_to')} />
+              <input
+                className={s.selectInput}
+                placeholder={'От'}
+                type={'number'}
+                {...register('payment_from', { min: 1 })}
+              />
+              <input
+                className={s.selectInput}
+                placeholder={'До'}
+                type={'number'}
+                {...register('payment_to')}
+              />
             </div>
-            <input type={'submit'} />
+            <button className={s.button} type={'submit'}>
+              Применить
+            </button>
           </form>
-          {/*<form onSubmit={formik.handleSubmit}>*/}
-          {/*  <div className={s.catalogBlock}>*/}
-          {/*    <p>Отрасль</p>*/}
-          {/*    <Select*/}
-          {/*      sx={styles.select}*/}
-          {/*      fullWidth*/}
-          {/*      value={catalogue}*/}
-          {/*      onChange={handleSelectValue}*/}
-          {/*      id={'select'}*/}
-          {/*      defaultValue={catalogue}*/}
-          {/*      variant={'outlined'}*/}
-          {/*    >*/}
-          {/*      {catalogs.map((cat, index) => {*/}
-          {/*        return (*/}
-          {/*          <MenuItem key={index} value={cat.url_rus}>*/}
-          {/*            {cat.title}*/}
-          {/*          </MenuItem>*/}
-          {/*        )*/}
-          {/*      })}*/}
-          {/*    </Select>*/}
-          {/*  </div>*/}
-          {/*  <div className={s.catalogBlock}>*/}
-          {/*    <p>Оклад</p>*/}
-          {/*    <TextField*/}
-          {/*      onChange={handleChangePayFrom}*/}
-          {/*      value={payFrom}*/}
-          {/*      fullWidth*/}
-          {/*      type={'number'}*/}
-          {/*      name={'payment_from'}*/}
-          {/*    ></TextField>*/}
-          {/*  </div>*/}
-          {/*  <button type={'submit'}>Применить</button>*/}
-          {/*</form>*/}
         </div>
       </div>
     </div>

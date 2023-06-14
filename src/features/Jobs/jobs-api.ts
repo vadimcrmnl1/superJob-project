@@ -21,6 +21,9 @@ export const jobsAPI = {
   getVacancies(params: VacanciesParamsType) {
     return instance.get<VacanciesResponseType>('vacancies', { params })
   },
+  getVacancy(id: number) {
+    return instance.get<VacancyType>(`vacancies/${id}`)
+  },
 }
 
 export type AuthParamsType = {

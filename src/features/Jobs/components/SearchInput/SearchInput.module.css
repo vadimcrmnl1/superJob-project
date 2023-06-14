@@ -3,6 +3,11 @@
 }
 
 .searchBlock {
+display: flex;
+    flex-direction: row;
+align-items: center;
+    justify-content: space-between;
+
     width: 100%;
     height: 40px;
 
@@ -20,4 +25,34 @@
 
 .searchBlock input:active {
     border: none;
+}
+
+.button {
+    width: 83px;
+    height: 32px;
+margin: 8px 12px 8px 0;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 21px;
+    color: #FFFFFF;
+
+    background: #5E96FC;
+    border: none;
+    border-radius: 8px;
+
+    transition: 0.3s;
+}
+
+.button:hover {
+    background-color: #477cd3;
+}
+
+.button:active {
+    color: #5E96FC;
+
+    background-color: #FFFFFF;
+    border: 1px solid #5E96FC;
 }

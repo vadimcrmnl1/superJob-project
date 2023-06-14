@@ -29,7 +29,9 @@ export const SearchInput = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={s.searchBlock}>
           <input placeholder={'Введите название вакансии'} {...register('keyword')} />
-          <button type={'submit'}>Найти</button>
+          <button className={s.button} type={'submit'}>
+            Поиск
+          </button>
         </div>
       </form>
     </div>

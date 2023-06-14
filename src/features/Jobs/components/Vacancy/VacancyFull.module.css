@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    flex-direction: column;
+
+
+width: 773px;
+margin: 0 auto;
+}
+.titleContainer {
+    display: flex;
+    flex-direction: column;
+
+height: max-content;
+margin-top: 40px;
+
+    background-color: #FFFFFF;
+    border: 1px solid #EAEBED;
+    border-radius: 12px;
+}
+.titleBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 5px;
+}
+.titleBlock p {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    font-style: normal;
+    /* identical to box height */
+
+
+    /* Black */
+
+    color: #232134;
+}
+.descriptionBlock {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #FFFFFF;
+    border: 1px solid #EAEBED;
+    border-radius: 12px;
+}

@@ -1,7 +1,96 @@
 .container {
-height: 137px;
+    min-height: 137px;
     margin-top: 15px;
 
     background-color: white;
-border-radius: 10px
+    border: 1px solid #EAEBED;
+    border-radius: 12px
+}
+
+.titleBlock {
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 24px;
+    color: #5E96FC;
+    text-decoration: none;
+}
+
+.vacancyBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: space-evenly;
+
+
+    margin: 24px;
+}
+
+.paymentBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+
+    height: max-content;
+}
+
+.paymentBlock p {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 20px;
+}
+
+.paymentBlock span {
+    margin-left: 12px;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 21px;
+    color: #7B7C88;
+}
+
+.paymentBlock h3 {
+    margin-left: 12px;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 20px;
+}
+
+.locationBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+
+    height: 20px;
+}
+
+.locationBlock span {
+    margin-left: 12px;
+
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 19px;
+    /* Black */
+
+    color: #232134;
+
 }
