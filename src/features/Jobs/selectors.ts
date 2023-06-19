@@ -11,3 +11,6 @@ export const selectResponsibilities = (state: AppRootStateType) => state.jobs.re
 export const selectCity = (state: AppRootStateType) => state.jobs.city
 export const selectJobId = (state: AppRootStateType) => state.jobs.jobId
 export const selectVacancy = (state: AppRootStateType) => state.jobs.vacancy
+export const selectFavVac = (state: AppRootStateType) => state.jobs.favourite
+export const selectCountFavVac = (state: AppRootStateType) => state.jobs.favoriteVacancies.length
+export const selectFavoritesVacancies = (state: AppRootStateType) => state.jobs.favoriteVacancies

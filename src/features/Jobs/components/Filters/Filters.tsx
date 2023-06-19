@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import ClearIcon from '@mui/icons-material/Clear'
 import { useForm } from 'react-hook-form'
@@ -16,25 +16,12 @@ interface FormFilter {
   catalogues: number
 }
 
-const styles = {
-  select: {
-    height: '42px',
-    borderRadius: '8px',
-    border: 'Grey 300',
-  },
-  button: {
-    height: '40px',
-    borderRadius: '8px',
-    background: '#5E96FC',
-    color: 'white',
-  },
-}
-
 export const Filters = () => {
   const dispatch = useAppDispatch()
   const catalogs = useAppSelector(selectCatalogs)
   const [catalogue, setCatalogue] = useState<string>('')
   const payFrom = useAppSelector(selectPaymentFrom)
+
   const {
     register,
     setValue,
@@ -58,6 +45,7 @@ export const Filters = () => {
       dispatch(getCataloguesTC())
     }
   }
+
   // useEffect(() => {
   //   dispatch(getCataloguesTC())
   // }, [])

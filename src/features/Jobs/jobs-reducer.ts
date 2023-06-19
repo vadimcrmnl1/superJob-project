@@ -8,6 +8,7 @@ import { JobsActionsType } from './types'
 export const jobsInitialState = {
   jobs: [] as VacancyType[],
   vacancy: {} as VacancyType,
+  favoriteVacancies: [] as VacancyType[],
   jobTitle: '',
   payment_to: 0,
   payment_from: 0,
@@ -17,6 +18,7 @@ export const jobsInitialState = {
   requirements: '',
   conditions: '',
   jobId: 0,
+  favourite: false,
 }
 export type JobsInitialState = typeof jobsInitialState
 export const vacanciesReducer = (
@@ -29,6 +31,13 @@ export const vacanciesReducer = (
         ...state,
         jobs: action.payload.vacancies.map(jobs => {
           return { ...jobs }
+        }),
+      }
+    case 'JOBS/FETCH_FAVORITES':
+      return {
+        ...state,
+        favoriteVacancies: action.payload.favorites.map(fav => {
+          return { ...fav }
         }),
       }
     case 'JOBS/SET_CITY':
@@ -51,6 +60,8 @@ export const vacanciesReducer = (
       return { ...state, responsibilities: action.payload.responsibilities }
     case 'JOBS/SET_VACANCY':
       return { ...state, vacancy: action.payload.vacancy }
+    case 'JOBS/SET_FAVOURITE':
+      return { ...state, favourite: action.payload.favourite }
     default:
       return state
   }
@@ -71,6 +82,19 @@ export const getJobsTC = (): AppThunk<AllReducersActionsType> => async (dispatch
     dispatch(appActions.setAppIsLoadingAC(false))
   }
 }
+export const getFavoritesVacanciesTC =
+  (): AppThunk<AllReducersActionsType> => async (dispatch, getState) => {
+    dispatch(appActions.setAppIsLoadingAC(true))
+    try {
+      const res = await jobsAPI.getFavouriteVacancies()
+
+      dispatch(jobsActions.fetchFavoritesVacanciesAC(res.data.objects))
+    } catch (error: any) {
+      alert(error)
+    } finally {
+      dispatch(appActions.setAppIsLoadingAC(false))
+    }
+  }
 export const getVacancyTC =
   (id: number): AppThunk<AllReducersActionsType> =>
   async (dispatch, getState) => {
@@ -85,5 +109,39 @@ export const getVacancyTC =
       alert(error)
     } finally {
       dispatch(appActions.setAppIsLoadingAC(false))
+    }
+  }
+export const setFavouriteVacancyTC =
+  (id: number): AppThunk<AllReducersActionsType> =>
+  async dispatch => {
+    dispatch(appActions.setAppIsLoadingAC(true))
+    try {
+      const res = await jobsAPI.setFavouriteVacancy(id)
+
+      if (res.status === 201) {
+        dispatch(jobsActions.setFavouriteVacancyAC(true))
+        dispatch(getJobsTC())
+        dispatch(getFavoritesVacanciesTC())
+        dispatch(appActions.setAppIsLoadingAC(false))
+      }
+    } catch (error: any) {
+      alert(error)
+    }
+  }
+export const deleteFavouriteVacancyTC =
+  (id: number): AppThunk<AllReducersActionsType> =>
+  async dispatch => {
+    dispatch(appActions.setAppIsLoadingAC(true))
+    try {
+      const res = await jobsAPI.deleteFavouriteVacancy(id)
+
+      if (res.status === 204) {
+        dispatch(jobsActions.setFavouriteVacancyAC(false))
+        dispatch(getJobsTC())
+        dispatch(getFavoritesVacanciesTC())
+        dispatch(appActions.setAppIsLoadingAC(false))
+      }
+    } catch (error: any) {
+      alert(error)
     }
   }

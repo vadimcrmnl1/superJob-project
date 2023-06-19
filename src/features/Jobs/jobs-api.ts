@@ -8,6 +8,7 @@ const instance = axios.create({
     'x-secret-key': 'GEU4nvd3rej*jeh.eqp',
     'X-Api-App-Id':
       'v3.r.137440105.ffdbab114f92b821eac4e21f485343924a773131.06c3bdbb8446aeb91c35b80c42ff69eb9c457948',
+    'Content-Type': 'application/x-www-form-urlencoded',
   },
 })
 
@@ -24,8 +25,21 @@ export const jobsAPI = {
   getVacancy(id: number) {
     return instance.get<VacancyType>(`vacancies/${id}`)
   },
+  setFavouriteVacancy(id: number) {
+    return instance.post(`favorites/${id}`)
+  },
+  deleteFavouriteVacancy(id: number) {
+    return instance.delete(`favorites/${id}`)
+  },
+  getFavouriteVacancies() {
+    return instance.get<FavouritesResponseType>(`favorites`)
+  },
 }
-
+export type FavouritesResponseType = {
+  objects: VacancyType[]
+  total: number
+  more: boolean
+}
 export type AuthParamsType = {
   login: string
   password: string

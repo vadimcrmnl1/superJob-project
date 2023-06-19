@@ -3,20 +3,22 @@
     flex-direction: column;
 
 
-width: 773px;
-margin: 0 auto;
+    width: 773px;
+    margin: 0 auto;
 }
+
 .titleContainer {
     display: flex;
     flex-direction: column;
 
-height: max-content;
-margin-top: 40px;
+    height: max-content;
+    margin-top: 40px;
 
     background-color: #FFFFFF;
     border: 1px solid #EAEBED;
     border-radius: 12px;
 }
+
 .titleBlock {
     display: flex;
     flex-direction: row;
@@ -25,6 +27,7 @@ margin-top: 40px;
 
     margin: 5px;
 }
+
 .titleBlock p {
     font-family: 'Inter', sans-serif;
     font-size: 28px;
@@ -37,11 +40,33 @@ margin-top: 40px;
 
     color: #232134;
 }
+
 .descriptionBlock {
     display: flex;
     flex-direction: column;
 
+    margin: 20px 0 20px 0;
+
     background-color: #FFFFFF;
     border: 1px solid #EAEBED;
     border-radius: 12px;
+}
+
+.vacancyText {
+    margin: 24px;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 20px;
+    /* identical to box height, or 100% */
+
+
+    /* Black */
+
+    color: #232134;
+}
+
+.vacancyText p {
+    font-size: 16px;
 }

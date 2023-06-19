@@ -1,20 +1,20 @@
 import React from 'react'
 
-import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined'
 import { NavLink } from 'react-router-dom'
 
-import { useAppDispatch } from '../../../../app/store'
+import { useAppDispatch, useAppSelector } from '../../../../app/store'
 import { PATH } from '../../../../common/utils/Routes'
 import {
   setCityAC,
+  setFavouriteVacancyAC,
   setJobIdAC,
   setJobTitleAC,
   setPaymentFromAC,
   setPaymentToAC,
-  setResponsibilitiesAC,
   setTypeOfWorkAC,
 } from '../../actions'
 import { getVacancyTC } from '../../jobs-reducer'
+import { selectFavVac } from '../../selectors'
 
 import { Favourites } from './components/Favourites/Favourites'
 import { Location } from './components/Location/Location'
@@ -29,6 +29,8 @@ type VacancyPropsType = {
   payment_from: number
   payment_to: number
   id: number
+  favourite: boolean
+  type: 'short' | 'full'
 }
 export const stylesUI = {
   paymentBlock: {
@@ -72,11 +74,19 @@ export const VacancyShort: React.FC<VacancyPropsType> = ({
   payment_to,
   payment_from,
   responsibilities,
+  favourite,
   id,
+  type,
 }) => {
   const dispatch = useAppDispatch()
+  const favourVac = useAppSelector(selectFavVac)
   const handleLinkToJob = () => {
+    dispatch(setJobTitleAC(title))
+    dispatch(setCityAC(town))
+    dispatch(setFavouriteVacancyAC(favourite))
     dispatch(setJobIdAC(id))
+    dispatch(setPaymentFromAC(payment_from))
+    dispatch(setPaymentToAC(payment_to))
     dispatch(setTypeOfWorkAC(title))
     dispatch(getVacancyTC(id))
   }
@@ -85,11 +95,15 @@ export const VacancyShort: React.FC<VacancyPropsType> = ({
     <div className={s.container}>
       <div className={s.vacancyBlock}>
         <div className={s.titleBlock}>
-          <NavLink onClick={handleLinkToJob} className={s.title} to={PATH.vacancy + '/?' + id}>
-            {profession}
-          </NavLink>
+          {type === 'short' ? (
+            <NavLink onClick={handleLinkToJob} className={s.title} to={PATH.vacancy + '/?' + id}>
+              {profession}
+            </NavLink>
+          ) : (
+            <p>{profession}</p>
+          )}
           <div>
-            <Favourites />
+            <Favourites favourite={favourite} id={id} />
           </div>
         </div>
         <Payment

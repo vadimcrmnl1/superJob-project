@@ -1,3 +1,4 @@
+import SearchIcon from '@mui/icons-material/Search'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { useAppDispatch } from '../../../../app/store'
@@ -21,13 +22,13 @@ export const SearchInput = () => {
   const onSubmit: SubmitHandler<SearchInputType> = data => {
     dispatch(setKeywordAC(data.keyword))
     dispatch(getJobsTC())
-    reset()
   }
 
   return (
     <div className={s.container}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={s.searchBlock}>
+          <SearchIcon style={{ opacity: '0.5', marginLeft: '12px' }} />
           <input placeholder={'Введите название вакансии'} {...register('keyword')} />
           <button className={s.button} type={'submit'}>
             Поиск

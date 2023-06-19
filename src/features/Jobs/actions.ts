@@ -5,6 +5,12 @@ export const fetchVacanciesAC = (vacancies: VacancyType[]) =>
     type: 'JOBS/FETCH_JOBS',
     payload: { vacancies },
   } as const)
+export const fetchFavoritesVacanciesAC = (favorites: VacancyType[]) =>
+  ({
+    type: 'JOBS/FETCH_FAVORITES',
+    payload: { favorites },
+  } as const)
+
 export const setJobTitleAC = (title: string) =>
   ({
     type: 'JOBS/SET_JOB_TITLE',
