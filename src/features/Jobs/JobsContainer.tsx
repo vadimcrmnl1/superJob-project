@@ -1,19 +1,34 @@
 import { useEffect } from 'react'
 
+import { Navigate } from 'react-router-dom'
+
+import { selectAppError } from '../../app/selectors'
 import { useAppDispatch, useAppSelector } from '../../app/store'
-import { PaginationRounded } from '../../common/components/Pagination/Pagination'
+import { PaginationRounded } from '../../common/components/Pagination/PaginationVacancies'
+import { PATH } from '../../common/utils/Routes'
 
 import { Filters } from './components/Filters/Filters'
+import { selectKeyword } from './components/Filters/selectors'
 import { SearchInput } from './components/SearchInput/SearchInput'
 import { VacancyShort } from './components/Vacancy/VacancyShort'
+import { getJobsTC } from './jobs-reducer'
 import s from './JobsContainer.module.css'
-import { selectJobs } from './selectors'
+import { selectJobs, selectPage } from './selectors'
 
 export const JobsContainer = () => {
   const dispatch = useAppDispatch()
   const jobs = useAppSelector(selectJobs)
+  const keyword = useAppSelector(selectKeyword)
+  const page = useAppSelector(selectPage)
+  const error = useAppSelector(selectAppError)
 
-  useEffect(() => {}, [])
+  useEffect(() => {
+    dispatch(getJobsTC())
+  }, [keyword, page])
+
+  if (error) {
+    return <Navigate to={PATH.vacancies} />
+  }
 
   return (
     <div className={s.container}>
@@ -37,7 +52,7 @@ export const JobsContainer = () => {
               />
             )
           })}
-        {jobs && <PaginationRounded />}
+        {jobs.length !== 0 && <PaginationRounded />}
       </div>
     </div>
   )

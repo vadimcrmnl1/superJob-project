@@ -5,6 +5,7 @@ import thunk from 'redux-thunk'
 
 import { authReducer } from '../features/auth/auth-reducer'
 // eslint-disable-next-line import/namespace
+import { favoritesReducer } from '../features/Favourites/favorites-reducer'
 import { filterReducer } from '../features/Jobs/components/Filters/filters-reducer'
 import { vacanciesReducer } from '../features/Jobs/jobs-reducer'
 
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   filters: filterReducer,
   jobs: vacanciesReducer,
+  fav: favoritesReducer,
 })
 const middlewareEnhancer = applyMiddleware<AppThunkDispatch, AppRootStateType>(thunk)
 

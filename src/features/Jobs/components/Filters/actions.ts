@@ -1,10 +1,5 @@
-import { CatalogsDataType, VacanciesType } from './types'
+import { CatalogsDataType } from './types'
 
-export const setPublishedAC = (published: number) =>
-  ({
-    type: 'FILTERS/SET_PUBLISHED',
-    payload: { published },
-  } as const)
 export const setKeywordAC = (keyword: string) =>
   ({
     type: 'FILTERS/SET_KEYWORD',
@@ -29,9 +24,4 @@ export const setCatalogKeyAC = (key: number) =>
   ({
     type: 'FILTERS/SET_KEY',
     payload: { key },
-  } as const)
-export const setVacanciesAC = (vacancies: VacanciesType[]) =>
-  ({
-    type: 'FILTERS/SET_VACANCIES',
-    payload: { vacancies },
   } as const)

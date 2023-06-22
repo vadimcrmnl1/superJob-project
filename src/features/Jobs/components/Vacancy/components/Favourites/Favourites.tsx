@@ -3,42 +3,46 @@ import React, { useEffect, useState } from 'react'
 import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded'
 import StarRoundedIcon from '@mui/icons-material/StarRounded'
 
-import { useAppDispatch } from '../../../../../../app/store'
-import { deleteFavouriteVacancyTC, setFavouriteVacancyTC } from '../../../../jobs-reducer'
+import { useAppDispatch, useAppSelector } from '../../../../../../app/store'
+import {
+  deleteFavouriteVacancyTC,
+  setFavouriteVacancyTC,
+} from '../../../../../Favourites/favorites-reducer'
+import { selectFavVac } from '../../../../../Favourites/selectors'
+
+import s from './Favorites.module.css'
 
 type FavouritesType = {
   favourite: boolean
   id: number
+  type: 'full' | 'short'
 }
 
-export const Favourites: React.FC<FavouritesType> = ({ favourite, id }) => {
+export const Favourites: React.FC<FavouritesType> = ({ favourite, id, type }) => {
   const dispatch = useAppDispatch()
-  const [favouriteVacancy, setFavouriteVacancy] = useState<boolean>(false)
-
+  const fav = useAppSelector(selectFavVac)
   const handleFavorite = () => {
     dispatch(setFavouriteVacancyTC(id))
-    setFavouriteVacancy(true)
   }
   const handleUnFavorite = () => {
     dispatch(deleteFavouriteVacancyTC(id))
-    setFavouriteVacancy(false)
   }
 
   useEffect(() => {
-    if (!favourite) {
-      setFavouriteVacancy(true)
+    if (!favourite && type === 'full') {
+      favourite = fav
     }
-    if (favourite) {
-      setFavouriteVacancy(false)
+    if (favourite && type === 'full') {
+      favourite = fav
     }
-  }, [favourite])
+  }, [favourite, fav])
 
   return (
     <div>
-      {!favourite ? (
-        <StarBorderRoundedIcon style={{ color: 'gray' }} onClick={handleFavorite} />
+      {!favourite && !fav ? (
+        <StarBorderRoundedIcon className={s.favOff} onClick={handleFavorite} />
       ) : (
-        <StarRoundedIcon style={{ color: '#5E96FC' }} onClick={handleUnFavorite} />
+        <StarRoundedIcon className={s.favOn} onClick={handleUnFavorite} />
       )}
     </div>
   )

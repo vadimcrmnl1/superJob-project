@@ -1,72 +1,77 @@
 .container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-
-    width: 773px;
-    margin: 0 auto;
+  width: 734px;
+  margin: 0 auto;
 }
 
 .titleContainer {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    height: max-content;
-    margin-top: 40px;
+  height: max-content;
+  margin-top: 40px;
 
-    background-color: #FFFFFF;
-    border: 1px solid #EAEBED;
-    border-radius: 12px;
+  background-color: #ffffff;
+  border: 1px solid #eaebed;
+  border-radius: 12px;
 }
 
 .titleBlock {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 
-    margin: 5px;
+  margin: 5px;
 }
 
 .titleBlock p {
-    font-family: 'Inter', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    font-style: normal;
-    /* identical to box height */
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  font-style: normal;
+  /* identical to box height */
 
+  /* Black */
 
-    /* Black */
-
-    color: #232134;
+  color: #232134;
 }
 
 .descriptionBlock {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    margin: 20px 0 20px 0;
+  width: 100%;
+  margin: 20px 0 20px 0;
 
-    background-color: #FFFFFF;
-    border: 1px solid #EAEBED;
-    border-radius: 12px;
+  background-color: #ffffff;
+  border: 1px solid #eaebed;
+  border-radius: 12px;
 }
 
 .vacancyText {
-    margin: 24px;
+  margin: 24px;
 
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    line-height: 20px;
-    /* identical to box height, or 100% */
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 20px;
+  /* identical to box height, or 100% */
 
+  /* Black */
 
-    /* Black */
-
-    color: #232134;
+  color: #232134;
 }
 
 .vacancyText p {
-    font-size: 16px;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 95%;
+
+  }
 }

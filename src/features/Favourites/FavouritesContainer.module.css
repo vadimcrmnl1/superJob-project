@@ -5,8 +5,9 @@
     justify-content: center;
 
     width: 70%;
-margin: 0 auto;
+    margin: 0 auto;
 }
+
 .emptyBlock {
     display: flex;
     flex-direction: column;
@@ -53,4 +54,10 @@ margin: 0 auto;
     color: #0088fd;
 
     background: #c9d4ea;
+}
+
+@media screen and (max-width: 600px) {
+.container {
+    width: 90%;
+}
 }

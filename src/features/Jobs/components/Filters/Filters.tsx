@@ -1,14 +1,15 @@
-import { useState } from 'react'
+import React, { useEffect } from 'react'
 
 import ClearIcon from '@mui/icons-material/Clear'
 import { useForm } from 'react-hook-form'
+import { useSearchParams } from 'react-router-dom'
 
 import { useAppDispatch, useAppSelector } from '../../../../app/store'
 
 import * as actions from './actions'
 import { getCataloguesTC } from './filters-reducer'
 import s from './Filters.module.css'
-import { selectCatalogs, selectPaymentFrom } from './selectors'
+import { selectCatalogKey, selectCatalogs, selectPaymentFrom, selectPaymentTo } from './selectors'
 
 interface FormFilter {
   payment_from: number
@@ -19,12 +20,14 @@ interface FormFilter {
 export const Filters = () => {
   const dispatch = useAppDispatch()
   const catalogs = useAppSelector(selectCatalogs)
-  const [catalogue, setCatalogue] = useState<string>('')
+  const catalogKey = useAppSelector(selectCatalogKey)
   const payFrom = useAppSelector(selectPaymentFrom)
+  const payTo = useAppSelector(selectPaymentTo)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const params = Object.fromEntries(searchParams)
 
   const {
     register,
-    setValue,
     handleSubmit,
     reset,
     formState: { errors },
@@ -33,6 +36,12 @@ export const Filters = () => {
     dispatch(actions.setCatalogKeyAC(data.catalogues))
     dispatch(actions.setPaymentFromAC(data.payment_from))
     dispatch(actions.setPaymentToAC(data.payment_to))
+    setSearchParams({
+      ...params,
+      payment_from: payFrom.toString(),
+      payment_to: payTo.toString(),
+      catalogues: catalogKey.toString(),
+    })
   })
   const handleResetForm = () => {
     reset()
@@ -46,9 +55,14 @@ export const Filters = () => {
     }
   }
 
-  // useEffect(() => {
-  //   dispatch(getCataloguesTC())
-  // }, [])
+  useEffect(() => {
+    setSearchParams({
+      ...params,
+      payment_from: payFrom.toString(),
+      payment_to: payTo.toString(),
+      catalogues: catalogKey.toString(),
+    })
+  }, [payTo, payFrom, catalogKey])
 
   return (
     <div className={s.container}>
@@ -90,7 +104,7 @@ export const Filters = () => {
                 className={s.selectInput}
                 placeholder={'До'}
                 type={'number'}
-                {...register('payment_to')}
+                {...register('payment_to', { min: 2 })}
               />
             </div>
             <button className={s.button} type={'submit'}>

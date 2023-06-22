@@ -31,9 +31,13 @@ export const jobsAPI = {
   deleteFavouriteVacancy(id: number) {
     return instance.delete(`favorites/${id}`)
   },
-  getFavouriteVacancies() {
-    return instance.get<FavouritesResponseType>(`favorites`)
+  getFavouriteVacancies(params: FavParamsType) {
+    return instance.get<FavouritesResponseType>(`favorites`, { params })
   },
+}
+export type FavParamsType = {
+  page: number
+  count?: number
 }
 export type FavouritesResponseType = {
   objects: VacancyType[]
@@ -54,9 +58,12 @@ export type VacanciesParamsType = {
   payment_from?: number
   payment_to?: number
   catalogues?: number
+  page?: number
+  count?: number
 }
 export type VacanciesResponseType = {
   objects: VacancyType[]
+  total: number
 }
 
 export type VacancyType = {

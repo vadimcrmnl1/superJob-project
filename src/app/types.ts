@@ -2,6 +2,7 @@ import { AnyAction } from 'redux'
 import { ThunkAction, ThunkDispatch } from 'redux-thunk'
 
 import { AuthActionsType } from '../features/auth/types'
+import { FavoritesActionsType } from '../features/Favourites/types'
 import { FiltersActionsType } from '../features/Jobs/components/Filters/types'
 import { JobsActionsType } from '../features/Jobs/types'
 
@@ -21,9 +22,10 @@ export type AllReducersActionsType =
   | AuthActionsType
   | FiltersActionsType
   | JobsActionsType
+  | FavoritesActionsType
 export type AppActionsType = ReturnType<InferValueTypes<typeof actions>>
 export type AppInitialStateType = {
   isLoading: boolean
-  error: string
+  error: boolean
   isFirstStart: boolean
 }

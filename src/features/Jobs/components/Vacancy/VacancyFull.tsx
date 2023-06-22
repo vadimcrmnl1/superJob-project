@@ -2,8 +2,7 @@ import React from 'react'
 
 import { useSearchParams } from 'react-router-dom'
 
-import { selectIsFirstStart } from '../../../../app/selectors'
-import { useAppDispatch, useAppSelector } from '../../../../app/store'
+import { useAppSelector } from '../../../../app/store'
 import {
   selectCity,
   selectFavVac,
@@ -19,15 +18,12 @@ import s from './VacancyFull.module.css'
 import { VacancyShort } from './VacancyShort'
 
 export const VacancyFull = () => {
-  const dispatch = useAppDispatch()
-  const firstStart = useAppSelector(selectIsFirstStart)
   const id = useAppSelector(selectJobId)
   const vacancy = useAppSelector(selectVacancy)
   const typeOfWork = useAppSelector(selectTypeOfWork)
   const city = useAppSelector(selectCity)
   const favourite = useAppSelector(selectFavVac)
   const [searchParams, setSearchParams] = useSearchParams()
-  const vacancyId = Object.fromEntries(searchParams)
   const paymentFrom = useAppSelector(selectPaymentFrom)
   const paymentTo = useAppSelector(selectPaymentTo)
   const professionTitle = useAppSelector(selectJobTitle)
@@ -49,25 +45,11 @@ export const VacancyFull = () => {
         favourite={favourite}
         type={'full'}
       />
-      {/*<div className={s.titleContainer}>*/}
-      {/*  <div className={st.titleBlock}>*/}
-      {/*    <p>{vacancy.profession}</p>*/}
-      {/*    <Favourites id={id} favourite={favourite} />*/}
-      {/*  </div>*/}
-      {/*  <Payment*/}
-      {/*    payment_to={vacancy.payment_to}*/}
-      {/*    payment_from={vacancy.payment_from}*/}
-      {/*    title={typeOfWork}*/}
-      {/*  />*/}
-      {/*  <Location town={city} />*/}
-      {/*</div>*/}
       <div className={s.descriptionBlock}>
         <div
           className={s.vacancyText}
           dangerouslySetInnerHTML={{ __html: vacancy.vacancyRichText }}
-        >
-          {/*{vacancy.vacancyRichText}*/}
-        </div>
+        ></div>
       </div>
     </div>
   )

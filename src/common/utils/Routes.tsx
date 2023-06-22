@@ -8,7 +8,7 @@ import { ErrorPage } from '../components/ErrorPage/ErrorPage'
 
 export const PATH = {
   vacancies: '/vacancies',
-  favourites: '/favourites',
+  favourites: '/favorites',
   default: '/#/',
   vacancy: '/vacancy',
 }
@@ -19,11 +19,11 @@ const router = createHashRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        // errorElement: <ErrorPage />,
+        errorElement: <ErrorPage />,
         children: [
           // { index: true, element: <Button /> },
           { path: PATH.vacancies, element: <JobsContainer /> },
-          { path: `${PATH.vacancy}`, element: <VacancyFull /> },
+          { path: PATH.vacancy, element: <VacancyFull /> },
           { path: PATH.favourites, element: <FavouritesContainer /> },
         ],
       },

@@ -10,17 +10,17 @@ type PaymentType = {
   styles?: StylesUIType
 }
 
-export const Payment: React.FC<PaymentType> = ({ payment_from, payment_to, title, styles }) => {
+export const Payment: React.FC<PaymentType> = ({ payment_from, payment_to, title }) => {
   return (
     <div className={s.paymentBlock}>
       {(payment_to !== 0 || payment_from !== 0) && (
-        <p style={styles?.p}>
+        <p>
           з/п {payment_from ? payment_from : ''} {payment_to ? '-' : ''}{' '}
           {payment_to ? payment_to : ''} rub
         </p>
       )}
-      <span style={styles?.paymentBlockSpan}>•</span>
-      {title ? <h3 style={styles?.paymentBlockH3}>{title}</h3> : ''}
+      <span>•</span>
+      {title ? <h3>{title}</h3> : ''}
     </div>
   )
 }

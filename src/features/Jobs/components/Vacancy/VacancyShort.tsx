@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom'
 
 import { useAppDispatch, useAppSelector } from '../../../../app/store'
 import { PATH } from '../../../../common/utils/Routes'
+import { setFavoriteVacancyAC } from '../../../Favourites/actions'
 import {
   setCityAC,
-  setFavouriteVacancyAC,
   setJobIdAC,
   setJobTitleAC,
   setPaymentFromAC,
@@ -73,17 +73,15 @@ export const VacancyShort: React.FC<VacancyPropsType> = ({
   title,
   payment_to,
   payment_from,
-  responsibilities,
   favourite,
   id,
   type,
 }) => {
   const dispatch = useAppDispatch()
-  const favourVac = useAppSelector(selectFavVac)
   const handleLinkToJob = () => {
-    dispatch(setJobTitleAC(title))
+    dispatch(setJobTitleAC(profession))
     dispatch(setCityAC(town))
-    dispatch(setFavouriteVacancyAC(favourite))
+    dispatch(setFavoriteVacancyAC(favourite))
     dispatch(setJobIdAC(id))
     dispatch(setPaymentFromAC(payment_from))
     dispatch(setPaymentToAC(payment_to))
@@ -103,7 +101,7 @@ export const VacancyShort: React.FC<VacancyPropsType> = ({
             <p>{profession}</p>
           )}
           <div>
-            <Favourites favourite={favourite} id={id} />
+            <Favourites type={'full'} favourite={favourite} id={id} />
           </div>
         </div>
         <Payment

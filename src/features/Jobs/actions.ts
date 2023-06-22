@@ -5,11 +5,6 @@ export const fetchVacanciesAC = (vacancies: VacancyType[]) =>
     type: 'JOBS/FETCH_JOBS',
     payload: { vacancies },
   } as const)
-export const fetchFavoritesVacanciesAC = (favorites: VacancyType[]) =>
-  ({
-    type: 'JOBS/FETCH_FAVORITES',
-    payload: { favorites },
-  } as const)
 
 export const setJobTitleAC = (title: string) =>
   ({
@@ -36,21 +31,7 @@ export const setCityAC = (city: string) =>
     type: 'JOBS/SET_CITY',
     payload: { city },
   } as const)
-export const setResponsibilitiesAC = (responsibilities: string) =>
-  ({
-    type: 'JOBS/SET_RESPONSIBILITIES',
-    payload: { responsibilities },
-  } as const)
-export const setRequirementsAC = (requirements: string) =>
-  ({
-    type: 'JOBS/SET_REQUIREMENTS',
-    payload: { requirements },
-  } as const)
-export const setConditions = (conditions: string) =>
-  ({
-    type: 'JOBS/SET_CONDITIONS',
-    payload: { conditions },
-  } as const)
+
 export const setJobIdAC = (id: number) =>
   ({
     type: 'JOBS/SET_JOB_ID',
@@ -61,8 +42,14 @@ export const setVacancyAC = (vacancy: VacancyType) =>
     type: 'JOBS/SET_VACANCY',
     payload: { vacancy },
   } as const)
-export const setFavouriteVacancyAC = (favourite: boolean) =>
+
+export const setPageAC = (page: number) =>
   ({
-    type: 'JOBS/SET_FAVOURITE',
-    payload: { favourite },
+    type: 'JOBS/SET_PAGE',
+    payload: { page },
+  } as const)
+export const setTotalCountAC = (totalCount: number) =>
+  ({
+    type: 'JOBS/SET_TOTAL_COUNT',
+    payload: { totalCount },
   } as const)

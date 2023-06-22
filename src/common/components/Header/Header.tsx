@@ -1,16 +1,14 @@
 import { NavLink } from 'react-router-dom'
 
 import { useAppDispatch } from '../../../app/store'
-import { getFavoritesVacanciesTC } from '../../../features/Jobs/jobs-reducer'
 import { PATH } from '../../utils/Routes'
 
 import logo from './../../images/logo.jpg'
 import s from './Header.module.css'
 
 export const Header = () => {
-  const dispatch = useAppDispatch()
   const handleFetchFavorites = () => {
-    dispatch(getFavoritesVacanciesTC())
+    // dispatch(getFavoritesVacanciesTC())
   }
 
   return (

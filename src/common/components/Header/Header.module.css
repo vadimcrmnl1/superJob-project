@@ -12,6 +12,7 @@
 
     background-color: white;
 }
+
 .logoBlock {
     float: left;
     display: flex;
@@ -20,6 +21,7 @@
 
     margin-left: 10%;
 }
+
 .logoBlock p {
     margin-left: 10px;
 
@@ -28,20 +30,23 @@
     font-weight: 600;
     font-style: normal;
     line-height: 36px;
-    
+
 }
+
 .logoBlock img {
     width: 30px;
     height: 30px;
 }
+
 .prescriptionBlock {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 
-width: 30%;
+    width: 30%;
     margin-right: 35%;
 }
+
 .link {
     font-family: 'Inter', sans-serif;
     font-size: 16px;
@@ -50,4 +55,29 @@ width: 30%;
     line-height: 20px;
     color: #5E96FC;
     text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+    .wrapper {
+        position: relative;
+
+        float: top;
+        display: flex;
+        flex-direction: row;
+
+        width: 100%;
+        margin-bottom: 15px;
+
+        border-radius: 10px;
+    }
+
+    .logoBlock p {
+        margin: 0 10px;
+
+        font-size: 18px;
+    }
+
+    .prescriptionBlock {
+        margin-left: 50px;
+    }
 }

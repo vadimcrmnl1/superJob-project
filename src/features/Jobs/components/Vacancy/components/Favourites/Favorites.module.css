@@ -1,0 +1,17 @@
+.favOff {
+    color: gray;
+
+    transition: 0.3s;
+}
+.favOff:hover {
+    scale: 1.2;
+}
+.favOn {
+    color: #5E96FC;
+
+    transition: 0.3s;
+
+}
+.favOn:hover {
+    scale: 1.2;
+}

@@ -3,7 +3,7 @@ export const setAppIsLoadingAC = (isLoading: boolean) =>
     type: 'APP/SET_IS_LOADING',
     payload: { isLoading },
   } as const)
-export const setAppErrorAC = (error: string) =>
+export const setAppErrorAC = (error: boolean) =>
   ({
     type: 'APP/SET_ERROR',
     payload: { error },

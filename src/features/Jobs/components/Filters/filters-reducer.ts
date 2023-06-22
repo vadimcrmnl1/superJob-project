@@ -4,6 +4,7 @@ import { jobsAPI } from '../../jobs-api'
 import * as appActions from './../../../../app/actions'
 import * as filterActions from './actions'
 import { CatalogsDataType, FiltersActionsType, VacanciesType } from './types'
+
 export const filtersInitialState = {
   published: 0,
   keyword: '',
@@ -35,21 +36,12 @@ export const filterReducer = (
       }
     case 'FILTERS/SET_KEYWORD':
       return { ...state, keyword: action.payload.keyword }
-    case 'FILTERS/SET_PUBLISHED':
-      return { ...state, published: action.payload.published }
     case 'FILTERS/SET_PAYMENT_FROM':
       return { ...state, payment_from: action.payload.payment_from }
     case 'FILTERS/SET_PAYMENT_TO':
       return { ...state, payment_to: action.payload.payment_to }
     case 'FILTERS/SET_KEY':
       return { ...state, catalogues: action.payload.key }
-    case 'FILTERS/SET_VACANCIES':
-      return {
-        ...state,
-        vacancies: action.payload.vacancies.map(vac => {
-          return { ...vac }
-        }),
-      }
     default:
       return state
   }

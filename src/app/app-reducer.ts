@@ -2,7 +2,7 @@ import { AppActionsType, AppInitialStateType } from './types'
 
 const appInitialState: AppInitialStateType = {
   isLoading: false,
-  error: '',
+  error: false,
   isFirstStart: true,
 }
 

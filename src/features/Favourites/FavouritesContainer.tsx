@@ -1,24 +1,39 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-import { NavLink } from 'react-router-dom'
+import { Navigate, NavLink } from 'react-router-dom'
 
+import { selectAppError } from '../../app/selectors'
 import { useAppDispatch, useAppSelector } from '../../app/store'
 import { PATH } from '../../common/utils/Routes'
 import { VacancyShort } from '../Jobs/components/Vacancy/VacancyShort'
-import { selectCountFavVac, selectFavoritesVacancies } from '../Jobs/selectors'
 
 import logo from './../../common/images/favEmptyLogo.jpg'
+import { getFavoritesVacanciesTC } from './favorites-reducer'
 import s from './FavouritesContainer.module.css'
+import {
+  selectFavLength,
+  selectFavMore,
+  selectFavPage,
+  selectFavTotalCount,
+  selectFavVacancies,
+} from './selectors'
 
 export const FavouritesContainer = () => {
   const dispatch = useAppDispatch()
-  const countFavVac = useAppSelector(selectCountFavVac)
-  const favoriteVacancies = useAppSelector(selectFavoritesVacancies)
+  const page = useAppSelector(selectFavPage)
+  const totalCount = useAppSelector(selectFavTotalCount)
+  const error = useAppSelector(selectAppError)
+  const countFavVac = useAppSelector(selectFavLength)
+  const favoriteVacancies = useAppSelector(selectFavVacancies)
+  const more = useAppSelector(selectFavMore)
 
-  console.log(countFavVac)
-  // useEffect(() => {
-  //   dispatch(getFavoritesVacanciesTC())
-  // }, [countFavVac])
+  useEffect(() => {
+    dispatch(getFavoritesVacanciesTC())
+  }, [page])
+
+  if (error) {
+    return <Navigate to={PATH.vacancies} />
+  }
 
   return (
     <div className={s.container}>
@@ -31,10 +46,10 @@ export const FavouritesContainer = () => {
           </NavLink>
         </div>
       ) : (
-        favoriteVacancies.map(vac => {
+        favoriteVacancies.map((vac, index) => {
           return (
             <VacancyShort
-              key={vac.id}
+              key={index}
               profession={vac.profession}
               town={vac.town.title}
               title={vac.type_of_work.title}
@@ -47,6 +62,8 @@ export const FavouritesContainer = () => {
           )
         })
       )}
+      {/*{totalCount > 3 || more ? <PaginationFav /> : <div style={{ marginTop: '15px' }}></div>}*/}
+      <div style={{ marginTop: '15px' }}></div>
     </div>
   )
 }

@@ -1,12 +1,14 @@
 .container {
-    min-width: 70%;
+    width: 733px;
+    /*min-width: 100%;*/
     min-height: 137px;
     margin-top: 15px;
 
     background-color: white;
-    border: 1px solid #EAEBED;
-    border-radius: 12px
+    border: 1px solid #eaebed;
+    border-radius: 12px;
 }
+
 
 .titleBlock {
     display: flex;
@@ -24,7 +26,6 @@
     line-height: 34px;
     /* identical to box height */
 
-
     /* Black */
 
     color: #232134;
@@ -36,7 +37,7 @@
     font-weight: 600;
     font-style: normal;
     line-height: 24px;
-    color: #5E96FC;
+    color: #5e96fc;
     text-decoration: none;
 }
 
@@ -45,7 +46,6 @@
     flex-direction: column;
     align-items: baseline;
     justify-content: space-evenly;
-
 
     margin: 24px;
 }
@@ -75,7 +75,7 @@
     font-weight: 400;
     font-style: normal;
     line-height: 21px;
-    color: #7B7C88;
+    color: #7b7c88;
 }
 
 .paymentBlock h3 {
@@ -107,5 +107,57 @@
     /* Black */
 
     color: #232134;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+    }
+
+    .titleBlock {
+        width: 100%;
+        height: max-content;
+    }
+
+    .titleBlock p {
+    font-size: 18px;
+    }
+
+    .vacancyBlock {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        min-height: 50px;
+        margin: 10px;
+    }
+
+    .title {
+        font-size: 16px;
+    }
+
+    .paymentBlock {
+        min-height: 40px;
+    }
+
+    .paymentBlock p {
+        font-size: 14px;
+    }
+
+    .paymentBlock h3 {
+        font-size: 14px;
+    }
+
+    .locationBlock {
+        height: 20px;
+    }
+
+    .locationBlock p {
+        height: 20px;
+    }
+
+    .locationBlock span {
+        font-size: 16px;
+    }
 
 }
