@@ -80,7 +80,7 @@ export const getJobsTC = (): AppThunk<AllReducersActionsType> => async (dispatch
 
 export const getVacancyTC =
   (id: number): AppThunk<AllReducersActionsType> =>
-  async dispatch => {
+  async (dispatch, getState) => {
     dispatch(appActions.setAppIsLoadingAC(true))
     // const id = getState().jobs.jobId
 
