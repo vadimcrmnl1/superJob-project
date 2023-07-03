@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/superJob-project/static/css/main.3da41530.css",
+    "main.js": "/superJob-project/static/js/main.c705d9e6.js",
+    "static/js/787.eb6839ad.chunk.js": "/superJob-project/static/js/787.eb6839ad.chunk.js",
+    "static/media/logo.jpg": "/superJob-project/static/media/logo.a860edda58701474f30a.jpg",
+    "static/media/favEmptyLogo.jpg": "/superJob-project/static/media/favEmptyLogo.2bcff34eac70ca578aaa.jpg",
+    "index.html": "/superJob-project/index.html",
+    "main.3da41530.css.map": "/superJob-project/static/css/main.3da41530.css.map",
+    "main.c705d9e6.js.map": "/superJob-project/static/js/main.c705d9e6.js.map",
+    "787.eb6839ad.chunk.js.map": "/superJob-project/static/js/787.eb6839ad.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3da41530.css",
+    "static/js/main.c705d9e6.js"
+  ]
+}
